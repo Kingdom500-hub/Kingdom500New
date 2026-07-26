@@ -33,13 +33,22 @@ BACKGROUND
 
 position:fixed;
 
-inset:0;
+top:0;
+left:0;
 
-z-index:-3;
+width:100%;
+height:100%;
+
+z-index:-5;
 
 background:
 
-linear-gradient(rgba(5,10,20,.55),rgba(5,10,20,.92)),
+linear-gradient(
+180deg,
+rgba(4,8,15,.15) 0%,
+rgba(4,8,15,.45) 30%,
+rgba(4,8,15,.82) 100%
+),
 
 url("images/background.jpg");
 
@@ -47,7 +56,14 @@ background-size:cover;
 
 background-position:center;
 
+background-repeat:no-repeat;
+
 background-attachment:fixed;
+
+filter:
+brightness(.75)
+contrast(1.08)
+saturate(1.05);
 
 }
 
@@ -59,25 +75,41 @@ FOG
 
 position:fixed;
 
-inset:0;
+top:0;
+left:0;
 
-z-index:-2;
+width:120%;
+height:120%;
 
-background:
+margin-left:-10%;
 
-radial-gradient(circle at 20% 20%,
-rgba(120,170,255,.08),
-transparent 45%),
+background:url("images/fog.png");
 
-radial-gradient(circle at 80% 60%,
-rgba(170,220,255,.06),
-transparent 50%),
+background-size:cover;
 
-radial-gradient(circle at 50% 90%,
-rgba(255,255,255,.04),
-transparent 55%);
+opacity:.18;
 
-animation:fogMove 18s ease-in-out infinite alternate;
+animation:fog 90s linear infinite;
+
+pointer-events:none;
+
+z-index:-4;
+
+}
+
+@keyframes fog{
+
+0%{
+
+transform:translateX(-4%);
+
+}
+
+100%{
+
+transform:translateX(4%);
+
+}
 
 }
 
@@ -205,31 +237,59 @@ max-width:900px;
 
 .mainLogo{
 
-width:260px;
+width:270px;
 
-margin-bottom:35px;
+margin-bottom:40px;
+
+animation:logoFloat 5s ease-in-out infinite;
 
 filter:
 
-drop-shadow(0 0 35px rgba(110,190,255,.55));
+drop-shadow(0 0 10px rgba(255,255,255,.25))
+
+drop-shadow(0 0 40px rgba(120,190,255,.65));
+
+}
+
+@keyframes logoFloat{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
 
 }
 
 .hero h1{
 
+font-size:82px;
+
 font-family:'Cinzel',serif;
 
-font-size:72px;
+font-weight:900;
 
-letter-spacing:6px;
+letter-spacing:8px;
 
-margin-bottom:25px;
-
-color:#f3f8ff;
+color:white;
 
 text-shadow:
 
-0 0 25px rgba(120,190,255,.35);
+0 0 8px rgba(255,255,255,.25),
+
+0 0 35px rgba(110,185,255,.35);
 
 }
 
@@ -266,23 +326,38 @@ flex-wrap:wrap;
 
 .primaryButton{
 
-background:linear-gradient(135deg,#5fb8ff,#3a87ff);
+background:
+
+linear-gradient(
+135deg,
+#2c6eff,
+#6dc8ff);
+
+padding:18px 48px;
+
+border-radius:60px;
+
+font-weight:700;
 
 color:white;
 
-padding:18px 42px;
-
-border-radius:50px;
-
 text-decoration:none;
 
-font-weight:600;
+box-shadow:
 
-letter-spacing:1px;
-
-box-shadow:0 0 30px rgba(95,184,255,.35);
+0 0 25px rgba(90,180,255,.35);
 
 transition:.35s;
+
+}
+
+.primaryButton:hover{
+
+transform:translateY(-5px);
+
+box-shadow:
+
+0 0 45px rgba(90,180,255,.7);
 
 }
 
@@ -392,23 +467,73 @@ gap:35px;
 
 .card{
 
-background:rgba(15,22,35,.55);
+background:rgba(10,20,35,.45);
 
-backdrop-filter:blur(18px);
+backdrop-filter:blur(22px);
 
-border:1px solid rgba(120,180,255,.12);
+border:1px solid rgba(130,200,255,.18);
 
 border-radius:24px;
 
-padding:40px;
+padding:45px;
 
-text-align:center;
+overflow:hidden;
+
+position:relative;
 
 transition:.35s;
 
 box-shadow:
 
-0 10px 40px rgba(0,0,0,.35);
+0 15px 50px rgba(0,0,0,.45);
+
+}
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-120%;
+
+width:70%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.08),
+
+transparent);
+
+transition:.8s;
+
+}
+
+.card:hover::before{
+
+left:170%;
+
+}
+
+.card:hover{
+
+transform:translateY(-12px);
+
+border-color:#6dc8ff;
+
+box-shadow:
+
+0 0 45px rgba(90,180,255,.25);
 
 }
 
@@ -850,6 +975,48 @@ flex-direction:column;
 
 gap:15px;
 
+}
+
+}
+/* ===============================
+AURORA
+=============================== */
+
+.aurora{
+
+position:fixed;
+
+top:-20%;
+
+left:-20%;
+
+width:140%;
+
+height:70%;
+
+z-index:-4;
+
+pointer-events:none;
+
+background:
+radial-gradient(circle at 20% 50%,rgba(0,255,180,.12),transparent 45%),
+radial-gradient(circle at 60% 20%,rgba(0,180,255,.12),transparent 45%),
+radial-gradient(circle at 90% 40%,rgba(100,180,255,.10),transparent 40%);
+
+filter:blur(90px);
+
+animation:auroraMove 18s ease-in-out infinite alternate;
+
+}
+
+@keyframes auroraMove{
+
+0%{
+transform:translateX(-4%) rotate(-2deg);
+}
+
+100%{
+transform:translateX(4%) rotate(2deg);
 }
 
 }
