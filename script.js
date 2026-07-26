@@ -39,3 +39,78 @@ for(let i=0;i<COUNT;i++){
     });
 
 }
+function draw(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    flakes.forEach(flake=>{
+
+        ctx.beginPath();
+
+        ctx.fillStyle="rgba(255,255,255,"+flake.alpha+")";
+
+        ctx.arc(
+
+            flake.x,
+
+            flake.y,
+
+            flake.r,
+
+            0,
+
+            Math.PI*2
+
+        );
+
+        ctx.fill();
+
+    });
+
+}
+function update(){
+
+    flakes.forEach(flake=>{
+
+        flake.angle+=flake.spin;
+
+        flake.y+=flake.speed;
+
+        flake.x+=flake.drift;
+
+        flake.x+=Math.sin(flake.angle)*0.4;
+
+        if(flake.y>canvas.height+20){
+
+            flake.y=-20;
+
+            flake.x=Math.random()*canvas.width;
+
+        }
+
+        if(flake.x<-20){
+
+            flake.x=canvas.width+20;
+
+        }
+
+        if(flake.x>canvas.width+20){
+
+            flake.x=-20;
+
+        }
+
+    });
+
+}
+function animate(){
+
+    draw();
+
+    update();
+
+    requestAnimationFrame(animate);
+
+}
+
+animate();
