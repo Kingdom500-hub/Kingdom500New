@@ -1,1064 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<!doctype html>
-<html lang="ru">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="page-title">K549 | MIGRATION — переходи на кингдом #549</title>
-<meta id="page-description" name="description" content="K549 · Migration — неофициальный фан-сайт сообщества кингдома #549 в Viking Rise. Сильный сервер, активные KVK, чёткая стратегия. Подай заявку на миграцию.">
+
+<title>Kingdom 500 | United We Conquer</title>
+
+<meta name="description"
+content="Kingdom 500 - Viking Rise Migration">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          charcoal: '#0b0c10',
-          'charcoal-deep': '#07080b',
-          ice: '#00f0ff',
-          ember: '#ff5500',
-          amber: '#ffaa00',
-          fg: '#e9ecf2',
-          'fg-muted': '#98a1b0',
-        },
-        fontFamily: {
-          display: ['Cinzel', 'serif'],
-          stat: ['Rajdhani', 'sans-serif'],
-          sans: ['Inter', 'sans-serif'],
-        },
-        boxShadow: {
-          'glow-ice': '0 0 28px rgba(0,240,255,.35)',
-          'glow-ember': '0 0 32px rgba(255,85,0,.55)',
-        },
-        keyframes: {
-          pulseBorder: {
-            '0%,100%': { boxShadow: '0 0 0 1px rgba(255,170,0,.35), 0 0 20px rgba(255,170,0,.25)' },
-            '50%':     { boxShadow: '0 0 0 1px rgba(255,170,0,.7), 0 0 34px rgba(255,140,0,.55)' },
-          },
-          emberPulse: {
-            '0%,100%': { boxShadow: '0 0 18px rgba(255,85,0,.45)' },
-            '50%':     { boxShadow: '0 0 36px rgba(255,120,20,.8)' },
-          },
-        },
-        animation: {
-          'pulse-border': 'pulseBorder 2.6s ease-in-out infinite',
-          'ember-pulse': 'emberPulse 2.2s ease-in-out infinite',
-        },
-      },
-    },
-  };
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+<link rel="stylesheet" href="style.css">
 
-<style>
-  html{scroll-behavior:smooth;}
-  body{font-family:'Inter',sans-serif;}
-  .font-display{font-family:'Cinzel',serif;}
-  .font-stat{font-family:'Rajdhani',sans-serif;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *, *::before, *::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
-  }
-
-  /* brushed-metal embossed headline text */
-  .text-metal{
-    background-image:linear-gradient(180deg,#ffffff 0%,#d6dae1 22%,#7d8492 46%,#aeb4bf 64%,#f4f6f9 100%);
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-    filter:drop-shadow(0 3px 3px rgba(0,0,0,.85)) drop-shadow(0 -1px 0 rgba(255,255,255,.12));
-  }
-
-  /* small rune-tick brackets flanking buttons / inputs, pure CSS (no markup needed) */
-  .rune-framed{
-    background-repeat:no-repeat, no-repeat;
-    background-position:left center, right center;
-    background-size:7px 22px, 7px 22px;
-    padding-left:1.5rem; padding-right:1.5rem;
-  }
-  .rune-framed-amber{
-    background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 28'%3E%3Cpath d='M8 3 L3 3 L3 25 L8 25' fill='none' stroke='%23ffaa00' stroke-width='1.6'/%3E%3C/svg%3E"),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 28'%3E%3Cpath d='M2 3 L7 3 L7 25 L2 25' fill='none' stroke='%23ffaa00' stroke-width='1.6'/%3E%3C/svg%3E");
-  }
-  .rune-framed-ice{
-    background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 28'%3E%3Cpath d='M8 3 L3 3 L3 25 L8 25' fill='none' stroke='%2300f0ff' stroke-width='1.4' opacity='.55'/%3E%3C/svg%3E"),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 28'%3E%3Cpath d='M2 3 L7 3 L7 25 L2 25' fill='none' stroke='%2300f0ff' stroke-width='1.4' opacity='.55'/%3E%3C/svg%3E");
-  }
-
-  .tilt-card{transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease; will-change:transform;}
-  ::selection{background:rgba(0,240,255,.28); color:#fff;}
-
-  /* glass panels: stronger blur + subtle scratched-metal/grain texture + ambient glow border */
-  .glass-panel{
-    position:relative;
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-    isolation:isolate;
-  }
-  .glass-panel::before{
-    content:"";
-    position:absolute; inset:0;
-    border-radius:inherit;
-    pointer-events:none;
-    z-index:-1;
-    opacity:.09;
-    mix-blend-mode:overlay;
-    background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cg stroke='%23000000' stroke-width='0.9' opacity='0.4'%3E%3Cline x1='22' y1='42' x2='97' y2='19'/%3E%3Cline x1='131' y1='69' x2='206' y2='47'/%3E%3Cline x1='33' y1='129' x2='103' y2='167'/%3E%3Cline x1='153' y1='158' x2='212' y2='196'/%3E%3Cline x1='63' y1='197' x2='143' y2='177'/%3E%3Cline x1='8' y1='177' x2='53' y2='147'/%3E%3C/g%3E%3Cg stroke='%23ffffff' stroke-width='0.6' opacity='0.55'%3E%3Cline x1='10' y1='30' x2='90' y2='10'/%3E%3Cline x1='120' y1='60' x2='200' y2='40'/%3E%3Cline x1='30' y1='120' x2='100' y2='160'/%3E%3Cline x1='150' y1='150' x2='210' y2='190'/%3E%3Cline x1='60' y1='190' x2='140' y2='170'/%3E%3Cline x1='5' y1='170' x2='50' y2='140'/%3E%3Cline x1='95' y1='80' x2='175' y2='95'/%3E%3Cline x1='40' y1='60' x2='75' y2='95'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size:220px 220px, 140px 140px;
-  }
-
-  /* genuine gradient (bronze/amber-to-ice) border ring instead of a flat single-color line */
-  .bronze-border{
-    border:1px solid transparent;
-    background-clip:padding-box, border-box;
-    background-origin:padding-box, border-box;
-    background-image:
-      linear-gradient(rgba(11,12,16,.6), rgba(11,12,16,.6)),
-      linear-gradient(135deg, #ffcc66 0%, #ff9a2e 30%, #7a4a1a 55%, #ffaa00 75%, #fff0cc 100%);
-    box-shadow:0 0 0 1px rgba(255,170,0,.12), 0 0 36px rgba(255,120,0,.16), inset 0 0 40px rgba(0,0,0,.35);
-  }
-  /* cooler steel/ice variant for the informational (non-CTA) panels */
-  .frost-border{
-    border:1px solid transparent;
-    background-clip:padding-box, border-box;
-    background-origin:padding-box, border-box;
-    background-image:
-      linear-gradient(rgba(11,12,16,.55), rgba(11,12,16,.55)),
-      linear-gradient(135deg, #7dd8e8 0%, #3a4451 35%, #16202b 55%, #5fc9dd 80%, #cdeff5 100%);
-    box-shadow:0 0 0 1px rgba(0,240,255,.1), 0 0 30px rgba(0,200,255,.12), inset 0 0 40px rgba(0,0,0,.35);
-  }
-
-  /* lighter-weight gradient borders for the small repeated cards (feature/chieftain),
-     kept translucent (not a solid dark fill like the big panels) + pulse on hover */
-  .card-border-amber{
-    border:1px solid transparent;
-    background-clip:padding-box, border-box;
-    background-origin:padding-box, border-box;
-    background-image:
-      linear-gradient(rgba(17,15,12,.78), rgba(17,15,12,.78)),
-      linear-gradient(135deg, #ffcc66 0%, #ff9a2e 35%, #7a4a1a 60%, #ffaa00 85%, #fff0cc 100%);
-    box-shadow:0 0 0 1px rgba(255,170,0,.14), 0 0 16px rgba(255,140,0,.16);
-    transition:transform .25s ease, box-shadow .3s ease;
-  }
-  .card-border-ice{
-    border:1px solid transparent;
-    background-clip:padding-box, border-box;
-    background-origin:padding-box, border-box;
-    background-image:
-      linear-gradient(rgba(12,16,20,.78), rgba(12,16,20,.78)),
-      linear-gradient(135deg, #7dd8e8 0%, #3a4451 35%, #16202b 55%, #5fc9dd 80%, #cdeff5 100%);
-    box-shadow:0 0 0 1px rgba(0,240,255,.12), 0 0 16px rgba(0,200,255,.14);
-    transition:transform .25s ease, box-shadow .3s ease;
-  }
-  @keyframes pulseGlowAmber{
-    0%,100%{ box-shadow:0 0 0 1px rgba(255,170,0,.2), 0 0 16px rgba(255,140,0,.22); }
-    50%{ box-shadow:0 0 0 1px rgba(255,170,0,.55), 0 0 34px rgba(255,140,0,.5); }
-  }
-  @keyframes pulseGlowIce{
-    0%,100%{ box-shadow:0 0 0 1px rgba(0,240,255,.16), 0 0 16px rgba(0,200,255,.2); }
-    50%{ box-shadow:0 0 0 1px rgba(0,240,255,.5), 0 0 34px rgba(0,200,255,.45); }
-  }
-  .card-border-amber:hover{ animation:pulseGlowAmber 1.5s ease-in-out infinite; }
-  .card-border-ice:hover{ animation:pulseGlowIce 1.5s ease-in-out infinite; }
-
-  /* neon-outlined custom Viking icons */
-  .icon-neon{width:1.35rem; height:1.35rem; flex-shrink:0;}
-  .icon-neon-amber{color:#ffaa00; filter:drop-shadow(0 0 5px rgba(255,170,0,.85));}
-  .icon-neon-ice{color:#00f0ff; filter:drop-shadow(0 0 5px rgba(0,240,255,.85));}
-
-  /* hero-flanking character art: white backgrounds removed via multiply blend
-     (works because the hero backdrop behind them is dark, not literal alpha),
-     with a soft bottom fade so the crop edge doesn't look like a hard cutout.
-     multiply can only ever darken - result is capped at the backdrop's own
-     brightness - so on a near-black page a plain multiply crushes the whole
-     figure to near-invisible. .hero-glow-pool lifts the local backdrop with a
-     warm radial light first, giving multiply something bright enough to show
-     real contrast against (and it doubles as "warriors lit from below/behind"). */
-  .hero-glow-pool{
-    background:radial-gradient(ellipse 60% 75% at 50% 65%, rgba(255,190,120,.55) 0%, rgba(200,120,50,.28) 45%, rgba(120,60,20,0) 78%);
-    filter:blur(2px);
-  }
-  .hero-figure{
-    mix-blend-mode:multiply;
-    -webkit-mask-image:linear-gradient(to bottom, #000 68%, transparent 100%);
-    mask-image:linear-gradient(to bottom, #000 68%, transparent 100%);
-    filter:brightness(1.25) contrast(1.1) saturate(1.1);
-  }
-
-  /* language switcher */
-  .lang-btn{color:#98a1b0;}
-  .lang-btn[aria-pressed="true"]{color:#00f0ff; background:rgba(0,240,255,.14);}
-  .lang-btn:hover{color:#e9ecf2;}
-</style>
 </head>
-<body class="bg-charcoal text-fg antialiased overflow-x-hidden">
 
-<audio id="hall-music" src="549.mp3" loop preload="auto"></audio>
+<body>
 
-<!-- 3D ember/smoke particle field -->
-<canvas id="particles-bg" class="fixed inset-0 -z-20" aria-hidden="true"></canvas>
-<div class="fixed inset-0 -z-10 bg-gradient-to-b from-charcoal-deep/55 via-charcoal-deep/25 to-charcoal-deep/90" aria-hidden="true"></div>
-<div class="fixed inset-0 -z-10 pointer-events-none" style="background:radial-gradient(ellipse at 50% 10%, transparent 0%, rgba(7,8,11,.75) 72%)" aria-hidden="true"></div>
+<div class="background"></div>
 
-<!-- Gate: click to enter, starts the hall music -->
-<div id="gate" class="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal-deep/95 backdrop-blur-md px-6 transition-opacity duration-700">
-  <div class="max-w-md w-full text-center rounded-2xl border border-amber/40 bg-white/5 backdrop-blur-xl p-8 sm:p-10 animate-pulse-border">
-    <div id="rune-emblem-fallback" class="w-16 h-16 mx-auto mb-5 text-amber" aria-hidden="true">
-      <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-[0_0_16px_rgba(255,170,0,.55)]">
-        <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
-          <path d="M50 88 V38 M50 38 L28 12 M50 38 L72 12"/>
-        </g>
-      </svg>
-    </div>
-    <div class="font-display text-xl sm:text-2xl font-bold uppercase tracking-wide text-fg" data-i18n="gate.title">Войти на K549</div>
-    <button id="enter-btn" type="button" class="rune-framed rune-framed-amber mt-6 w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-ember py-3 font-display font-bold uppercase tracking-wider text-charcoal-deep shadow-glow-ember animate-ember-pulse hover:brightness-110 active:scale-[.98] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ice focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal-deep">
-      <span data-i18n="gate.enter_btn">Переступить порог</span>
-    </button>
-    <p class="text-fg-muted text-xs mt-4" data-i18n="gate.hint">🔊 Со звуком — на входе зазвучит музыка чертога</p>
-  </div>
+<div class="fog"></div>
+
+<header>
+
+<div class="logoSmall">
+
+KINGDOM <span>500</span>
+
 </div>
 
-<!-- floating music toggle -->
-<button id="music-toggle" data-i18n-aria-label="music.on" aria-label="Включить музыку" aria-pressed="false"
-  class="fixed bottom-5 right-5 z-40 flex items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-lg text-ice opacity-0 scale-75 transition-all duration-500 hover:border-ice/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ice focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
-  style="width:52px;height:52px;">
-  <i data-lucide="volume-x" class="w-5 h-5 pointer-events-none" aria-hidden="true"></i>
-</button>
+<nav>
 
-<!-- Header -->
-<header class="fixed top-0 inset-x-0 z-30 border-b border-white/5 bg-charcoal/70 backdrop-blur-lg">
-  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between gap-4">
-    <a href="#top" class="flex items-center gap-2 font-display font-bold text-lg sm:text-xl tracking-wide flex-shrink-0">
-      <svg viewBox="0 0 32 32" class="w-6 h-6 text-amber flex-shrink-0" aria-hidden="true"><path d="M16 3 V29 M16 12 L6 4 M16 12 L26 4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
-      <span class="text-metal">K549</span><span class="text-fg-muted font-normal text-sm ml-1 hidden sm:inline">| MIGRATION</span>
-    </a>
+<a href="#about">About</a>
 
-    <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-fg-muted">
-      <a href="#top" class="hover:text-ice transition-colors" data-i18n="nav.about">О сервере</a>
-      <a href="#features" class="hover:text-ice transition-colors" data-i18n="nav.features">Преимущества</a>
-      <a href="#requirements" class="hover:text-ice transition-colors" data-i18n="nav.requirements">Требования</a>
-      <a href="#chieftains" class="hover:text-ice transition-colors" data-i18n="nav.chieftains">Ярлы</a>
-      <a href="#migration-form" class="hover:text-ice transition-colors" data-i18n="nav.contact">Связь</a>
-    </nav>
+<a href="#requirements">Requirements</a>
 
-    <div class="flex items-center gap-3 ml-auto lg:ml-0">
-      <div class="lang-switch hidden sm:flex items-center gap-0.5 rounded-full border border-white/10 bg-white/5 p-1" role="group" aria-label="Language / Язык">
-        <i data-lucide="languages" class="w-3.5 h-3.5 text-fg-muted ml-1.5 mr-0.5" aria-hidden="true"></i>
-        <button type="button" class="lang-btn rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide transition-colors" data-lang-btn="ru" aria-pressed="true">RU</button>
-        <button type="button" class="lang-btn rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide transition-colors" data-lang-btn="en" aria-pressed="false">EN</button>
-      </div>
+<a href="#apply">Apply</a>
 
-      <a href="#migration-form" class="rune-framed rune-framed-amber hidden sm:inline-flex items-center gap-2 rounded-lg bg-ember py-2.5 font-display text-sm font-bold uppercase tracking-wide text-charcoal-deep hover:brightness-110 active:scale-[.98] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ice focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal">
-        <span data-i18n="nav.cta">Подать заявку</span>
-      </a>
+</nav>
 
-      <button id="menu-toggle" class="lg:hidden text-fg p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ice rounded" data-i18n-aria-label="nav.menu_open" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
-        <i data-lucide="menu" class="w-6 h-6" aria-hidden="true"></i>
-      </button>
-    </div>
-  </div>
-
-  <nav id="mobile-menu" hidden class="lg:hidden border-t border-white/5 bg-charcoal-deep/95 backdrop-blur-lg px-5 py-4 flex-col gap-4 text-fg-muted">
-    <a href="#top" class="hover:text-ice transition-colors" data-i18n="nav.about">О сервере</a>
-    <a href="#features" class="hover:text-ice transition-colors" data-i18n="nav.features">Преимущества</a>
-    <a href="#requirements" class="hover:text-ice transition-colors" data-i18n="nav.requirements">Требования</a>
-    <a href="#chieftains" class="hover:text-ice transition-colors" data-i18n="nav.chieftains">Ярлы</a>
-    <div class="lang-switch flex items-center gap-0.5 rounded-full border border-white/10 bg-white/5 p-1 w-fit" role="group" aria-label="Language / Язык">
-      <i data-lucide="languages" class="w-3.5 h-3.5 text-fg-muted ml-1.5 mr-0.5" aria-hidden="true"></i>
-      <button type="button" class="lang-btn rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide transition-colors" data-lang-btn="ru" aria-pressed="true">RU</button>
-      <button type="button" class="lang-btn rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide transition-colors" data-lang-btn="en" aria-pressed="false">EN</button>
-    </div>
-    <a href="#migration-form" class="inline-flex items-center justify-center gap-2 rounded-lg bg-ember px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-charcoal-deep" data-i18n="nav.cta">Подать заявку</a>
-  </nav>
 </header>
 
-<main class="px-4 sm:px-6 lg:px-8">
+<section class="hero">
 
-  <!-- Hero -->
-  <section id="top" class="relative min-h-screen flex items-center justify-center pt-24 pb-14 overflow-hidden">
-    <div class="hero-glow-pool hidden xl:block absolute left-[130px] bottom-[10px] w-[260px] h-[280px] z-0 pointer-events-none"></div>
-    <img src="hero-l2.webp" alt="" aria-hidden="true" class="hero-figure hidden xl:block absolute left-[150px] bottom-[26px] w-[170px] z-0 opacity-85 pointer-events-none select-none">
-    <div class="hero-glow-pool hidden lg:block absolute left-[-30px] bottom-[-20px] w-[330px] h-[350px] z-[1] pointer-events-none"></div>
-    <img src="hero-l.webp" alt="" aria-hidden="true" class="hero-figure hidden lg:block absolute left-0 bottom-0 w-[240px] xl:w-[280px] z-[2] opacity-100 pointer-events-none select-none">
-    <div class="hero-glow-pool hidden lg:block absolute right-[-30px] bottom-[-20px] w-[330px] h-[350px] z-[1] pointer-events-none"></div>
-    <img src="hero-r.webp" alt="" aria-hidden="true" class="hero-figure hidden lg:block absolute right-0 bottom-0 w-[240px] xl:w-[280px] z-[2] opacity-100 pointer-events-none select-none">
-    <div class="relative z-10 w-full max-w-6xl mx-auto p-6 sm:p-10 lg:p-14">
-      <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-10 items-center">
-        <div>
-          <div class="rune-framed rune-framed-amber inline-flex items-center gap-2 rounded-full border border-amber/30 bg-amber/5 py-1.5 text-xs font-semibold uppercase tracking-widest text-amber mb-6">
-            <i data-lucide="sparkles" class="w-3.5 h-3.5" aria-hidden="true"></i>
-            <span data-i18n="hero.badge">Открыт набор альянсов и соло-игроков</span>
-          </div>
+<div class="heroContent">
 
-          <h1 class="text-metal font-display font-black uppercase leading-[1.05] text-4xl sm:text-5xl lg:text-6xl tracking-wide" data-i18n-html="hero.title">
-            Переходи на<br>кингдом #549
-          </h1>
+<img
+src="images/logo.png"
+class="mainLogo"
+alt="Kingdom 500">
 
-          <p class="mt-6 text-base sm:text-lg text-fg-muted max-w-xl leading-relaxed" data-i18n="hero.subtitle">
-            Сильный сервер, активные KVK-битвы, отсутствие токса и чёткая стратегия развития. Твой новый дом в Viking Rise.
-          </p>
+<h1>
 
-          <div class="mt-9 flex flex-col sm:flex-row gap-4">
-            <a href="#migration-form" class="rune-framed rune-framed-amber inline-flex items-center justify-center gap-2 rounded-xl bg-ember py-4 font-display font-bold uppercase tracking-wider text-charcoal-deep shadow-glow-ember hover:brightness-110 active:scale-[.98] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ice focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal">
-              <i data-lucide="send" class="w-5 h-5" aria-hidden="true"></i>
-              <span data-i18n="hero.cta_apply">Подать заявку на миграцию</span>
-            </a>
-            <a href="https://t.me/OPS549" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 backdrop-blur px-8 py-4 font-display font-semibold uppercase tracking-wider text-fg hover:border-ice/50 hover:text-ice transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ice focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal">
-              <i data-lucide="send" class="w-5 h-5" aria-hidden="true"></i>
-              <span data-i18n="hero.cta_telegram">Наш Telegram</span>
-            </a>
-          </div>
+UNITED WE CONQUER
 
-          <div class="mt-10 flex flex-wrap gap-3 font-stat">
-            <div class="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur px-4 py-2 text-sm text-fg-muted">
-              <i data-lucide="swords" class="w-4 h-4 text-ice" aria-hidden="true"></i> <span data-i18n="hero.badge_kvk">Активные KVK</span>
+</h1>
+
+<p>
+
+One of the strongest international kingdoms in the current migration bracket.
+
+We are looking for active players that want to dominate every KvK together.
+
+</p>
+
+<div class="heroButtons">
+
+<a href="#apply"
+class="primaryButton">
+
+Apply Now
+
+</a>
+
+<a href="https://discord.gg/DEINLINK"
+
+target="_blank"
+
+class="secondaryButton">
+
+Join Discord
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section
+id="about">
+
+<div class="container">
+
+<h2>
+
+WHY KINGDOM 500
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="icon">
+
+⚔
+
+</div>
+
+<h3>
+
+Competitive Kingdom
+
+</h3>
+
+<p>
+
+Daily active players.
+
+Organized KvK strategy.
+
+Strong PvP focus.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">
+
+🌍
+
+</div>
+
+<h3>
+
+International
+
+</h3>
+
+<p>
+
+Players from all over the world.
+
+English speaking.
+
+Friendly community.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">
+
+👑
+
+</div>
+
+<h3>
+
+Experienced Leadership
+
+</h3>
+
+<p>
+
+Organized officers.
+
+Fair migration.
+
+Long-term planning.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">
+
+🛡
+
+</div>
+
+<h3>
+
+Stable Kingdom
+
+</h3>
+
+<p>
+
+Strong teamwork.
+
+No drama.
+
+Focused on winning together.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section id="requirements">
+
+    <div class="container">
+
+        <h2>REQUIREMENTS</h2>
+
+        <div class="requirementsGrid">
+
+            <div class="requirementCard">
+
+                <span>✔</span>
+
+                <div>
+
+                    <h3>Active Player</h3>
+
+                    <p>Daily activity and participation in KvK events.</p>
+
+                </div>
+
             </div>
-            <div class="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur px-4 py-2 text-sm text-fg-muted">
-              <i data-lucide="users" class="w-4 h-4 text-ice" aria-hidden="true"></i> <span data-i18n="hero.badge_alliances">Открыт приём альянсов</span>
+
+            <div class="requirementCard">
+
+                <span>✔</span>
+
+                <div>
+
+                    <h3>Team Player</h3>
+
+                    <p>Communication and teamwork are more important than individual power.</p>
+
+                </div>
+
             </div>
-            <div class="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur px-4 py-2 text-sm text-fg-muted">
-              <i data-lucide="shield-check" class="w-4 h-4 text-ice" aria-hidden="true"></i> <span data-i18n="hero.badge_leadership">Стабильное руководство</span>
+
+            <div class="requirementCard">
+
+                <span>✔</span>
+
+                <div>
+
+                    <h3>Discord Required</h3>
+
+                    <p>Our kingdom uses Discord for communication and event planning.</p>
+
+                </div>
+
             </div>
-          </div>
+
+            <div class="requirementCard">
+
+                <span>✔</span>
+
+                <div>
+
+                    <h3>Migration Review</h3>
+
+                    <p>Every application is reviewed by our leadership before approval.</p>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="relative w-full max-w-sm mx-auto" aria-hidden="true">
-          <img src="triquetra-emblem.webp" alt="" class="w-full h-auto drop-shadow-[0_0_40px_rgba(255,140,20,.35)]" width="1000" height="1000" loading="eager" decoding="async">
-        </div>
-      </div>
     </div>
-  </section>
 
-  <!-- Why K549 -->
-  <section id="features" class="relative py-20">
-    <div class="glass-panel frost-border max-w-6xl mx-auto rounded-3xl bg-charcoal/50 p-6 sm:p-10 lg:p-14">
-      <div class="text-center mb-12">
-        <h2 class="text-metal font-display font-bold uppercase text-3xl sm:text-4xl tracking-wide" data-i18n="features.title">Почему K549</h2>
-        <p class="font-display text-fg-muted text-xs sm:text-sm tracking-[0.3em] uppercase mt-2">Why K549</p>
-      </div>
+</section>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5" id="tilt-grid">
-        <div class="tilt-card glass-panel card-border-ice rounded-2xl p-6">
-          <div class="w-11 h-11 rounded-lg bg-ice/10 flex items-center justify-center mb-4"><i data-lucide="shield" class="w-5 h-5 text-ice" aria-hidden="true"></i></div>
-          <p class="font-semibold text-fg" data-i18n="features.card1.title">Справедливое распределение наград</p>
-          <p class="text-fg-muted text-sm mt-2" data-i18n="features.card1.desc">Адекватный совет сервера и прозрачная система управления.</p>
-        </div>
-        <div class="tilt-card glass-panel card-border-ice rounded-2xl p-6">
-          <div class="w-11 h-11 rounded-lg bg-ice/10 flex items-center justify-center mb-4"><i data-lucide="swords" class="w-5 h-5 text-ice" aria-hidden="true"></i></div>
-          <p class="font-semibold text-fg" data-i18n="features.card2.title">Активный KVK и PvP</p>
-          <p class="text-fg-muted text-sm mt-2" data-i18n="features.card2.desc">Никакого афк — регулярные войны и защита союзников.</p>
-        </div>
-        <div class="tilt-card glass-panel card-border-ice rounded-2xl p-6">
-          <div class="w-11 h-11 rounded-lg bg-ice/10 flex items-center justify-center mb-4"><i data-lucide="heart-handshake" class="w-5 h-5 text-ice" aria-hidden="true"></i></div>
-          <p class="font-semibold text-fg" data-i18n="features.card3.title">Поддержка при переходе</p>
-          <p class="text-fg-muted text-sm mt-2" data-i18n="features.card3.desc">Помогаем топ-альянсам и соло-бойцам адаптироваться на новом месте.</p>
-        </div>
-        <div class="tilt-card glass-panel card-border-ice rounded-2xl p-6">
-          <div class="w-11 h-11 rounded-lg bg-ice/10 flex items-center justify-center mb-4"><i data-lucide="scroll-text" class="w-5 h-5 text-ice" aria-hidden="true"></i></div>
-          <p class="font-semibold text-fg" data-i18n="features.card4.title">Чёткие правила сервера</p>
-          <p class="text-fg-muted text-sm mt-2" data-i18n="features.card4.desc">Запрет на внутренний грабёж и бессмысленный зерг клиринг.</p>
-        </div>
-      </div>
+<section id="apply">
 
-      <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
-        <div class="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs sm:text-sm text-fg-muted"><i data-lucide="message-circle" class="w-4 h-4 text-amber" aria-hidden="true"></i><span data-i18n="features.pill1">Живые чаты в игре, Telegram и Discord</span></div>
-        <div class="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs sm:text-sm text-fg-muted"><i data-lucide="book-open" class="w-4 h-4 text-amber" aria-hidden="true"></i><span data-i18n="features.pill2">Гайды и советы по саморазвитию</span></div>
-        <div class="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs sm:text-sm text-fg-muted" data-i18n="features.pill3">🍌 Свои традиции</div>
-      </div>
-    </div>
-  </section>
+    <div class="container">
 
-  <!-- Requirements + Application form -->
-  <section id="requirements" class="relative py-20">
-    <div class="glass-panel bronze-border max-w-6xl mx-auto rounded-3xl bg-charcoal/60 p-6 sm:p-10 lg:p-14">
-      <div class="grid lg:grid-cols-2 gap-12">
+        <h2>JOIN KINGDOM 500</h2>
 
-        <div>
-          <h2 class="text-metal font-display font-bold uppercase text-2xl sm:text-3xl tracking-wide" data-i18n="requirements.title">Требования для миграции</h2>
-          <p class="font-display text-fg-muted text-xs tracking-[0.3em] uppercase mt-2 mb-8">Requirements</p>
+        <p class="sectionText">
 
-          <ul class="space-y-5">
-            <li class="flex items-start gap-3">
-              <svg viewBox="0 0 48 48" class="icon-neon icon-neon-amber mt-0.5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
-                <path d="M24 4 C32 7 40 9 40 9 V22 C40 33 33 41 24 44 C15 41 8 33 8 22 V9 C8 9 16 7 24 4 Z"/>
-                <circle cx="24" cy="20" r="4"/>
-                <path d="M14 27 H34 M16 33 H32"/>
-              </svg>
-              <span class="font-stat text-lg text-fg" data-i18n="requirements.item1">Сообщите силу и очки убийства — подберём подходящее место</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg viewBox="0 0 48 48" class="icon-neon icon-neon-amber mt-0.5" aria-hidden="true">
-                <path d="M8 41 L27 13" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
-                <path d="M23 17 C28 6 41 5 44 13 C47 21 37 28 26 25 C24 23 22 20 23 17 Z" fill="currentColor"/>
-              </svg>
-              <span class="font-stat text-lg text-fg" data-i18n="requirements.item2">Т6-войска — большой плюс, но не обязательное условие</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg viewBox="0 0 48 48" class="icon-neon icon-neon-amber mt-0.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
-                <path d="M24 42 V22 M24 22 L12 6 M24 22 L36 6"/>
-              </svg>
-              <span class="font-stat text-lg text-fg" data-i18n="requirements.item3">Готовность участвовать в KVK и голосовых чатах</span>
-            </li>
-          </ul>
+            Ready to fight alongside us?
 
-          <div class="mt-10 rounded-2xl border border-white/10 bg-white/5 p-5">
-            <div class="flex items-center gap-2 font-display font-bold uppercase text-sm tracking-wide text-ice mb-2">
-              <i data-lucide="users" class="w-4 h-4" aria-hidden="true"></i> <span data-i18n="requirements.leaders_title">Лидерам альянсов</span>
+            Fill out the application below and our recruitment team will contact you.
+
+        </p>
+
+        <form
+            class="applyForm"
+            action="https://formspree.io/f/DEINE_FORM_ID"
+            method="POST">
+
+            <div class="row">
+
+                <input
+                    type="text"
+                    name="player_name"
+                    placeholder="Player Name"
+                    required>
+
+                <input
+                    type="text"
+                    name="player_id"
+                    placeholder="Player ID"
+                    required>
+
             </div>
-            <p class="text-fg-muted text-sm" data-i18n="requirements.leaders_desc">Переносите альянс целиком? Напишите ярлам напрямую — обсудим перенос и распределение мест индивидуально.</p>
-          </div>
-        </div>
 
-        <div>
-          <h3 class="font-display font-bold uppercase text-lg text-fg mb-1" data-i18n="form.title">Заявка на миграцию</h3>
-          <p class="text-fg-muted text-sm mb-6" data-i18n="form.subtitle">Расскажите нам о себе, чтобы мы подготовили для вас лучшее место 😊</p>
+            <div class="row">
 
-          <form id="migration-form" class="flex flex-col gap-5">
-            <label class="block text-xs uppercase tracking-widest text-fg-muted">
-              <span data-i18n="form.label_nickname">Игровой ник</span> <span aria-hidden="true" class="text-ember">*</span>
-              <input type="text" name="nickname" required aria-required="true" autocomplete="off" data-i18n-placeholder="form.placeholder_nickname" placeholder="например: Ragnar_K549"
-                class="rune-framed rune-framed-ice mt-2 w-full rounded-lg border border-white/10 bg-charcoal-deep/60 py-3 text-fg placeholder:text-fg-muted/40 focus:outline-none focus:border-ice focus:ring-1 focus:ring-ice transition font-stat text-base">
-            </label>
-            <label class="block text-xs uppercase tracking-widest text-fg-muted">
-              <span data-i18n="form.label_server">Из какого вы сервера?</span>
-              <input type="text" name="server" autocomplete="off" data-i18n-placeholder="form.placeholder_server" placeholder="например: 412"
-                class="rune-framed rune-framed-ice mt-2 w-full rounded-lg border border-white/10 bg-charcoal-deep/60 py-3 text-fg placeholder:text-fg-muted/40 focus:outline-none focus:border-ice focus:ring-1 focus:ring-ice transition font-stat text-base">
-            </label>
-            <label class="block text-xs uppercase tracking-widest text-fg-muted">
-              <span data-i18n="form.label_power">Мощь и очки убийства (MGP / KP)</span>
-              <input type="text" name="power" autocomplete="off" data-i18n-placeholder="form.placeholder_power" placeholder="например: 90M / 12M KP"
-                class="rune-framed rune-framed-ice mt-2 w-full rounded-lg border border-white/10 bg-charcoal-deep/60 py-3 text-fg placeholder:text-fg-muted/40 focus:outline-none focus:border-ice focus:ring-1 focus:ring-ice transition font-stat text-base">
-            </label>
-            <label class="block text-xs uppercase tracking-widest text-fg-muted">
-              <span data-i18n="form.label_farms">Фермы и наличие T6</span>
-              <input type="text" name="farms" autocomplete="off" data-i18n-placeholder="form.placeholder_farms" placeholder="например: 3, T6 есть"
-                class="rune-framed rune-framed-ice mt-2 w-full rounded-lg border border-white/10 bg-charcoal-deep/60 py-3 text-fg placeholder:text-fg-muted/40 focus:outline-none focus:border-ice focus:ring-1 focus:ring-ice transition font-stat text-base">
-            </label>
+                <input
+                    type="text"
+                    name="current_kingdom"
+                    placeholder="Current Kingdom"
+                    required>
 
-            <button type="submit" class="rune-framed rune-framed-amber mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-ember py-4 font-display font-bold uppercase tracking-wider text-charcoal-deep shadow-glow-ember hover:brightness-110 active:scale-[.98] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ice focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal">
-              <i data-lucide="send" class="w-5 h-5" aria-hidden="true"></i>
-              <span data-i18n="form.submit">Отправить заявку на трансфер</span>
+                <input
+                    type="text"
+                    name="power"
+                    placeholder="Power"
+                    required>
+
+            </div>
+
+            <div class="row">
+
+                <input
+                    type="text"
+                    name="kill_points"
+                    placeholder="Kill Points"
+                    required>
+
+                <input
+                    type="text"
+                    name="discord"
+                    placeholder="Discord Username"
+                    required>
+
+            </div>
+
+            <textarea
+                name="message"
+                placeholder="Tell us about yourself..."></textarea>
+
+            <input
+                type="hidden"
+                name="_subject"
+                value="New Kingdom 500 Application">
+
+            <button type="submit">
+
+                SUBMIT APPLICATION
+
             </button>
-            <p class="text-fg-muted text-xs text-center" data-i18n-html="form.consent">* обязательное поле / * required field<br>Нажимая на кнопку, вы соглашаетесь с условиями о персональных данных</p>
-          </form>
 
-          <div id="form-result" hidden aria-live="polite" class="mt-6 rounded-xl border border-ember/40 bg-ember/10 p-5 text-sm"></div>
-        </div>
-      </div>
+        </form>
+
     </div>
-  </section>
 
-  <!-- Chieftains -->
-  <section id="chieftains" class="relative py-20">
-    <div class="glass-panel frost-border max-w-4xl mx-auto rounded-3xl bg-charcoal/50 p-6 sm:p-10 lg:p-14 text-center">
-      <h2 class="text-metal font-display font-bold uppercase text-3xl sm:text-4xl tracking-wide" data-i18n="chieftains.title">Ярлы K549</h2>
-      <p class="font-display text-fg-muted text-xs sm:text-sm tracking-[0.3em] uppercase mt-2">Jarls</p>
-      <p class="text-fg-muted mt-4 max-w-xl mx-auto" data-i18n="chieftains.desc">Свяжитесь напрямую — они ведут приём заявок и координируют миграцию.</p>
+</section>
 
-      <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <a href="https://t.me/Keypoint21" target="_blank" rel="noopener" class="group glass-panel card-border-amber rounded-2xl p-8 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ice focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal">
-          <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-ice/20 to-ember/20 border border-white/10 flex items-center justify-center mb-4">
-            <i data-lucide="shield" class="w-7 h-7 text-ice" aria-hidden="true"></i>
-          </div>
-          <div class="font-display font-bold text-lg text-fg">21СаМец21</div>
-          <div class="text-xs uppercase tracking-widest text-amber mt-1" data-i18n="chieftains.role1">Ярл · Приём заявок</div>
-          <div class="text-ice text-sm mt-3 inline-flex items-center gap-1.5 group-hover:underline"><i data-lucide="send" class="w-4 h-4" aria-hidden="true"></i>@Keypoint21</div>
+<footer>
+
+    <img
+        src="images/logo.png"
+        class="footerLogo"
+        alt="Kingdom 500">
+
+    <h3>
+
+        KINGDOM 500
+
+    </h3>
+
+    <p>
+
+        UNITED WE CONQUER
+
+    </p>
+
+    <div class="footerLinks">
+
+        <a href="https://discord.gg/DEINLINK">
+
+            Discord
+
         </a>
-        <a href="https://t.me/EvaZaltsman" target="_blank" rel="noopener" class="group glass-panel card-border-amber rounded-2xl p-8 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ice focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal">
-          <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-ice/20 to-ember/20 border border-white/10 flex items-center justify-center mb-4">
-            <i data-lucide="shield" class="w-7 h-7 text-ice" aria-hidden="true"></i>
-          </div>
-          <div class="font-display font-bold text-lg text-fg">Кэтрин</div>
-          <div class="text-xs uppercase tracking-widest text-amber mt-1" data-i18n="chieftains.role2">Ярл · Поддержка</div>
-          <div class="text-ice text-sm mt-3 inline-flex items-center gap-1.5 group-hover:underline"><i data-lucide="send" class="w-4 h-4" aria-hidden="true"></i>@EvaZaltsman</div>
+
+        <a href="#top">
+
+            Back to Top
+
         </a>
-      </div>
-    </div>
-  </section>
 
-</main>
-
-<!-- Footer -->
-<footer class="relative border-t border-white/5 px-5 sm:px-8 py-14">
-  <div class="max-w-4xl mx-auto text-center">
-    <div class="text-metal font-display font-bold uppercase tracking-widest mb-1 inline-block">K549 · Migration</div>
-    <p class="text-fg-muted text-sm mb-6" data-i18n="footer.tagline">Чертог кингдома #549 — здесь начинается ваш новый поход.</p>
-    <div class="flex items-center justify-center gap-4">
-      <a href="https://t.me/OPS549" target="_blank" rel="noopener" aria-label="Telegram-канал K549"
-        class="w-11 h-11 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-ice hover:border-ice/50 hover:shadow-glow-ice transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ice focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal">
-        <i data-lucide="send" class="w-5 h-5" aria-hidden="true"></i>
-      </a>
     </div>
-    <p class="text-fg-muted/60 text-xs mt-8" data-i18n="footer.disclaimer">Неофициальный фан-сайт для сообщества K549 · не является официальным ресурсом Viking Rise</p>
-  </div>
+
+    <p class="copyright">
+
+        © 2026 Kingdom 500 • Viking Rise Community
+
+    </p>
+
 </footer>
 
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-  }
-}
-</script>
-
-<script type="module">
-import * as THREE from 'three';
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-
-try {
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------- background ember + smoke particle field ---------- */
-  const canvas = document.getElementById('particles-bg');
-  const bgRenderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  bgRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-  bgRenderer.setSize(window.innerWidth, window.innerHeight);
-
-  const bgScene = new THREE.Scene();
-  const bgCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
-  bgCamera.position.z = 20;
-
-  // soft round sprite with a wide, gentle falloff - generated on canvas, no image asset needed
-  function makeSparkTexture() {
-    const c = document.createElement('canvas');
-    c.width = c.height = 128;
-    const ctx = c.getContext('2d');
-    const g = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
-    g.addColorStop(0, 'rgba(255,255,255,1)');
-    g.addColorStop(0.2, 'rgba(255,255,255,0.95)');
-    g.addColorStop(0.42, 'rgba(255,225,180,0.55)');
-    g.addColorStop(0.72, 'rgba(255,160,70,0.16)');
-    g.addColorStop(1, 'rgba(255,120,40,0)');
-    ctx.fillStyle = g;
-    ctx.fillRect(0, 0, 128, 128);
-    return new THREE.CanvasTexture(c);
-  }
-  const sparkTexture = makeSparkTexture();
-
-  function lerp3(t, cA, cB, cC) {
-    return t < 0.5 ? cA.clone().lerp(cB, t * 2) : cB.clone().lerp(cC, (t - 0.5) * 2);
-  }
-
-  const sparkVertex = `
-    attribute float aSize;
-    attribute float aOpacity;
-    attribute vec3 aColor;
-    varying vec3 vColor;
-    varying float vOpacity;
-    void main(){
-      vColor = aColor;
-      vOpacity = aOpacity;
-      vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-      gl_PointSize = aSize * (300.0 / -mvPosition.z);
-      gl_Position = projectionMatrix * mvPosition;
-    }
-  `;
-  const sparkFragment = `
-    uniform sampler2D uMap;
-    varying vec3 vColor;
-    varying float vOpacity;
-    void main(){
-      vec4 tex = texture2D(uMap, gl_PointCoord);
-      gl_FragColor = vec4(vColor, 1.0) * tex * vOpacity;
-    }
-  `;
-
-  // per-particle size, color and opacity (via attributes) + a life-cycle driven fade
-  // in/out, instead of uniform dots that just wrap at the top - this is what gives
-  // the field depth (bright vs barely-there sparks) rather than a flat point cloud
-  function createField(count, opts) {
-    const positions = new Float32Array(count * 3);
-    const baseX = new Float32Array(count);
-    const baseZ = new Float32Array(count);
-    const sizes = new Float32Array(count);
-    const colors = new Float32Array(count * 3);
-    const seeds = new Float32Array(count);
-    const life = new Float32Array(count);
-    const maxLife = new Float32Array(count);
-    const baseOpacity = new Float32Array(count);
-    const opacities = new Float32Array(count);
-
-    const cGold = new THREE.Color(opts.colorGold);
-    const cAmber = new THREE.Color(opts.colorAmber);
-    const cRed = new THREE.Color(opts.colorRed);
-
-    for (let i = 0; i < count; i++) {
-      baseX[i] = (Math.random() - 0.5) * opts.spreadX;
-      baseZ[i] = (Math.random() - 0.5) * opts.spreadZ;
-      positions[i * 3 + 0] = baseX[i];
-      positions[i * 3 + 1] = (Math.random() - 0.5) * opts.spreadY;
-      positions[i * 3 + 2] = baseZ[i];
-      sizes[i] = opts.sizeMin + Math.random() * (opts.sizeMax - opts.sizeMin);
-      seeds[i] = Math.random() * Math.PI * 2;
-      maxLife[i] = opts.lifeMin + Math.random() * (opts.lifeMax - opts.lifeMin);
-      life[i] = Math.random() * maxLife[i];
-      baseOpacity[i] = opts.opacityMin + Math.random() * (opts.opacityMax - opts.opacityMin);
-      const c = lerp3(Math.random(), cGold, cAmber, cRed);
-      colors[i * 3] = c.r; colors[i * 3 + 1] = c.g; colors[i * 3 + 2] = c.b;
-    }
-
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geo.setAttribute('aColor', new THREE.BufferAttribute(colors, 3));
-    geo.setAttribute('aSize', new THREE.BufferAttribute(sizes, 1));
-    geo.setAttribute('aOpacity', new THREE.BufferAttribute(opacities, 1));
-
-    const material = new THREE.ShaderMaterial({
-      uniforms: { uMap: { value: sparkTexture } },
-      vertexShader: sparkVertex,
-      fragmentShader: sparkFragment,
-      transparent: true,
-      depthWrite: false,
-      blending: opts.additive ? THREE.AdditiveBlending : THREE.NormalBlending,
-    });
-
-    const points = new THREE.Points(geo, material);
-    bgScene.add(points);
-    return { geo, baseX, baseZ, seeds, life, maxLife, baseOpacity, count, opts };
-  }
-
-  const embers = createField(reduceMotion ? 150 : 650, {
-    spreadX: 42, spreadY: 26, spreadZ: 22,
-    sizeMin: 0.12, sizeMax: 0.55,
-    opacityMin: 0.25, opacityMax: 1.0,
-    lifeMin: 6, lifeMax: 14,
-    swayAmp: 0.9,
-    colorGold: '#ffcc00', colorAmber: '#ff8a1e', colorRed: '#cc3300',
-    additive: true,
-  });
-  const smoke = createField(reduceMotion ? 30 : 90, {
-    spreadX: 48, spreadY: 28, spreadZ: 26,
-    sizeMin: 1.4, sizeMax: 3.2,
-    opacityMin: 0.04, opacityMax: 0.14,
-    lifeMin: 14, lifeMax: 26,
-    swayAmp: 0.5,
-    colorGold: '#6b7280', colorAmber: '#565c68', colorRed: '#3f4451',
-    additive: false,
-  });
-
-  let mouseX = 0, mouseY = 0, camX = 0, camY = 0;
-  if (!reduceMotion) {
-    window.addEventListener('pointermove', function (e) {
-      mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-      mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-    }, { passive: true });
-  }
-
-  function updateField(field, dt, t) {
-    const posArr = field.geo.attributes.position.array;
-    const opArr = field.geo.attributes.aOpacity.array;
-    const spreadY = field.opts.spreadY;
-    const swayAmp = field.opts.swayAmp;
-    for (let i = 0; i < field.count; i++) {
-      field.life[i] += dt;
-      if (field.life[i] > field.maxLife[i]) field.life[i] -= field.maxLife[i];
-      const frac = field.life[i] / field.maxLife[i];
-      let fade;
-      if (frac < 0.15) fade = frac / 0.15;
-      else if (frac > 0.75) fade = (1 - frac) / 0.25;
-      else fade = 1;
-      opArr[i] = fade * field.baseOpacity[i];
-
-      posArr[i * 3 + 1] = -spreadY / 2 + frac * spreadY;
-      posArr[i * 3 + 0] = field.baseX[i] + Math.sin(t * 0.4 + field.seeds[i]) * swayAmp;
-      posArr[i * 3 + 2] = field.baseZ[i] + Math.cos(t * 0.35 + field.seeds[i]) * swayAmp * 0.6;
-    }
-    field.geo.attributes.position.needsUpdate = true;
-    field.geo.attributes.aOpacity.needsUpdate = true;
-  }
-
-  // bloom post-processing: only bright/overlapping sparks cross the threshold and glow
-  const composer = new EffectComposer(bgRenderer);
-  composer.addPass(new RenderPass(bgScene, bgCamera));
-  const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.25, 0.55, 0.18);
-  composer.addPass(bloomPass);
-
-  function fitBg() {
-    bgCamera.aspect = window.innerWidth / window.innerHeight;
-    bgCamera.updateProjectionMatrix();
-    bgRenderer.setSize(window.innerWidth, window.innerHeight);
-    composer.setSize(window.innerWidth, window.innerHeight);
-    bloomPass.setSize(window.innerWidth, window.innerHeight);
-  }
-  window.addEventListener('resize', fitBg);
-
-  let lastTime = performance.now();
-  function renderBg() {
-    if (!reduceMotion) {
-      const now = performance.now();
-      const dt = Math.min((now - lastTime) / 1000, 0.1);
-      lastTime = now;
-      const t = now / 1000;
-      updateField(embers, dt, t);
-      updateField(smoke, dt * 0.6, t * 0.5);
-      camX += (mouseX * 1.2 - camX) * 0.02;
-      camY += (-mouseY * 0.8 - camY) * 0.02;
-      bgCamera.position.x = camX;
-      bgCamera.position.y = camY;
-      bgCamera.lookAt(0, 0, 0);
-    }
-    composer.render();
-    if (!reduceMotion) requestAnimationFrame(renderBg);
-  }
-  renderBg();
-
-} catch (err) {
-  // no WebGL / CDN blocked: page still fully works, just without the 3D/particle layer
-}
-</script>
-
-<script>
-(function(){
-  if (window.lucide) { lucide.createIcons(); } else { window.addEventListener('load', function(){ if (window.lucide) lucide.createIcons(); }); }
-
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // --- language switcher ---
-  var I18N = {
-    ru: {
-      'meta.title': 'K549 | MIGRATION — переходи на кингдом #549',
-      'meta.description': 'K549 · Migration — неофициальный фан-сайт сообщества кингдома #549 в Viking Rise. Сильный сервер, активные KVK, чёткая стратегия. Подай заявку на миграцию.',
-      'gate.title': 'Войти на K549',
-      'gate.enter_btn': 'Переступить порог',
-      'gate.hint': '🔊 Со звуком — на входе зазвучит музыка чертога',
-      'music.on': 'Включить музыку',
-      'music.off': 'Выключить музыку',
-      'nav.about': 'О сервере',
-      'nav.features': 'Преимущества',
-      'nav.requirements': 'Требования',
-      'nav.chieftains': 'Ярлы',
-      'nav.contact': 'Связь',
-      'nav.cta': 'Подать заявку',
-      'nav.menu_open': 'Открыть меню',
-      'hero.badge': 'Открыт набор альянсов и соло-игроков',
-      'hero.title': 'Переходи на<br>кингдом #549',
-      'hero.subtitle': 'Сильный сервер, активные KVK-битвы, отсутствие токса и чёткая стратегия развития. Твой новый дом в Viking Rise.',
-      'hero.cta_apply': 'Подать заявку на миграцию',
-      'hero.cta_telegram': 'Наш Telegram',
-      'hero.badge_kvk': 'Активные KVK',
-      'hero.badge_alliances': 'Открыт приём альянсов',
-      'hero.badge_leadership': 'Стабильное руководство',
-      'features.title': 'Почему K549',
-      'features.card1.title': 'Справедливое распределение наград',
-      'features.card1.desc': 'Адекватный совет сервера и прозрачная система управления.',
-      'features.card2.title': 'Активный KVK и PvP',
-      'features.card2.desc': 'Никакого афк — регулярные войны и защита союзников.',
-      'features.card3.title': 'Поддержка при переходе',
-      'features.card3.desc': 'Помогаем топ-альянсам и соло-бойцам адаптироваться на новом месте.',
-      'features.card4.title': 'Чёткие правила сервера',
-      'features.card4.desc': 'Запрет на внутренний грабёж и бессмысленный зерг клиринг.',
-      'features.pill1': 'Живые чаты в игре, Telegram и Discord',
-      'features.pill2': 'Гайды и советы по саморазвитию',
-      'features.pill3': '🍌 Свои традиции',
-      'requirements.title': 'Требования для миграции',
-      'requirements.item1': 'Сообщите силу и очки убийства — подберём подходящее место',
-      'requirements.item2': 'Т6-войска — большой плюс, но не обязательное условие',
-      'requirements.item3': 'Готовность участвовать в KVK и голосовых чатах',
-      'requirements.leaders_title': 'Лидерам альянсов',
-      'requirements.leaders_desc': 'Переносите альянс целиком? Напишите ярлам напрямую — обсудим перенос и распределение мест индивидуально.',
-      'form.title': 'Заявка на миграцию',
-      'form.subtitle': 'Расскажите нам о себе, чтобы мы подготовили для вас лучшее место 😊',
-      'form.label_nickname': 'Игровой ник',
-      'form.label_server': 'Из какого вы сервера?',
-      'form.label_power': 'Мощь и очки убийства (MGP / KP)',
-      'form.label_farms': 'Фермы и наличие T6',
-      'form.placeholder_nickname': 'например: Ragnar_K549',
-      'form.placeholder_server': 'например: 412',
-      'form.placeholder_power': 'например: 90M / 12M KP',
-      'form.placeholder_farms': 'например: 3, T6 есть',
-      'form.submit': 'Отправить заявку на трансфер',
-      'form.consent': '* обязательное поле<br>Нажимая на кнопку, вы соглашаетесь с условиями о персональных данных',
-      'chieftains.title': 'Ярлы K549',
-      'chieftains.desc': 'Свяжитесь напрямую — они ведут приём заявок и координируют миграцию.',
-      'chieftains.role1': 'Ярл · Приём заявок',
-      'chieftains.role2': 'Ярл · Поддержка',
-      'footer.tagline': 'Чертог кингдома #549 — здесь начинается ваш новый поход.',
-      'footer.disclaimer': 'Неофициальный фан-сайт для сообщества K549 · не является официальным ресурсом Viking Rise',
-      'result.header': 'Заявка на миграцию в K549 / Migration application to K549',
-      'result.nickname': 'Ник в игре',
-      'result.server': 'Сервер',
-      'result.power': 'Сила и очки убийства',
-      'result.farms': 'Фермы',
-      'result.title': 'Анкета готова',
-      'result.copy_hint': 'Скопируйте анкету и отправьте одному из ярлов в Telegram.',
-      'result.copy_btn': 'Копировать анкету',
-      'result.copied': 'Скопировано ✓',
-      'result.write_to': 'Написать',
-      'result.sending': 'Отправляем заявку...',
-      'result.sent': 'Заявка отправлена ярлам ✓',
-      'result.send_error': 'Не удалось отправить автоматически — скопируйте анкету и отправьте вручную.',
-    },
-    en: {
-      'meta.title': 'K549 | MIGRATION — transfer to kingdom #549',
-      'meta.description': 'K549 · Migration — an unofficial fan site for the kingdom #549 community in Viking Rise. Strong server, active KVK, clear strategy. Apply for migration.',
-      'gate.title': 'Enter K549',
-      'gate.enter_btn': 'Cross the threshold',
-      'gate.hint': '🔊 With sound on — the hall’s music starts as you enter',
-      'music.on': 'Turn music on',
-      'music.off': 'Turn music off',
-      'nav.about': 'About the server',
-      'nav.features': 'Advantages',
-      'nav.requirements': 'Requirements',
-      'nav.chieftains': 'Jarls',
-      'nav.contact': 'Contact',
-      'nav.cta': 'Apply now',
-      'nav.menu_open': 'Open menu',
-      'hero.badge': 'Alliances and solo players welcome',
-      'hero.title': 'Transfer to<br>kingdom #549',
-      'hero.subtitle': 'Strong server, active KVK battles, zero toxicity, and a clear growth strategy. Your new home in Viking Rise.',
-      'hero.cta_apply': 'Apply for migration',
-      'hero.cta_telegram': 'Our Telegram',
-      'hero.badge_kvk': 'Active KVK',
-      'hero.badge_alliances': 'Alliances welcome',
-      'hero.badge_leadership': 'Stable leadership',
-      'features.title': 'Why K549',
-      'features.card1.title': 'Fair reward distribution',
-      'features.card1.desc': 'A reasonable server council and a transparent management system.',
-      'features.card2.title': 'Active KVK and PvP',
-      'features.card2.desc': 'No AFK — regular wars and protection for allies.',
-      'features.card3.title': 'Support during the transfer',
-      'features.card3.desc': 'We help top alliances and solo players settle into their new home.',
-      'features.card4.title': 'Clear server rules',
-      'features.card4.desc': 'No internal looting, no pointless zerg-clearing.',
-      'features.pill1': 'Active chats in-game, on Telegram and Discord',
-      'features.pill2': 'Guides and tips for growth',
-      'features.pill3': '🍌 Our own traditions',
-      'requirements.title': 'Migration requirements',
-      'requirements.item1': 'Tell us your might and kill points — we’ll find you the right spot',
-      'requirements.item2': 'T6 troops are a big plus, but not required',
-      'requirements.item3': 'Willingness to join KVK and voice chats',
-      'requirements.leaders_title': 'For alliance leaders',
-      'requirements.leaders_desc': 'Moving your whole alliance? Message the jarls directly — we’ll work out the transfer and placement individually.',
-      'form.title': 'Migration application',
-      'form.subtitle': 'Tell us about yourself so we can prepare the best spot for you 😊',
-      'form.label_nickname': 'In-game nickname',
-      'form.label_server': 'Which server are you from?',
-      'form.label_power': 'Might and kill points (MGP / KP)',
-      'form.label_farms': 'Farm accounts and T6 troops',
-      'form.placeholder_nickname': 'e.g. Ragnar_K549',
-      'form.placeholder_server': 'e.g. 412',
-      'form.placeholder_power': 'e.g. 90M / 12M KP',
-      'form.placeholder_farms': 'e.g. 3, has T6',
-      'form.submit': 'Submit transfer application',
-      'form.consent': '* required field<br>By clicking the button, you agree to the personal data terms',
-      'chieftains.title': 'Jarls of K549',
-      'chieftains.desc': 'Reach out directly — they handle applications and coordinate the migration.',
-      'chieftains.role1': 'Jarl · Applications',
-      'chieftains.role2': 'Jarl · Support',
-      'footer.tagline': 'The hall of kingdom #549 — where your new journey begins.',
-      'footer.disclaimer': 'Unofficial fan site for the K549 community · not an official Viking Rise resource',
-      'result.header': 'Migration application to K549',
-      'result.nickname': 'Nickname',
-      'result.server': 'Server',
-      'result.power': 'Might & kill points',
-      'result.farms': 'Farm accounts',
-      'result.title': 'Application ready',
-      'result.copy_hint': 'Copy the application and send it to one of the jarls on Telegram.',
-      'result.copy_btn': 'Copy application',
-      'result.copied': 'Copied ✓',
-      'result.write_to': 'Message',
-      'result.sending': 'Sending application...',
-      'result.sent': 'Application sent to the jarls ✓',
-      'result.send_error': 'Automatic send failed — copy the application and send it manually.',
-    },
-  };
-
-  var currentLang = 'ru';
-
-  function applyLanguage(lang){
-    if (!I18N[lang]) return;
-    currentLang = lang;
-    document.documentElement.lang = lang;
-
-    var titleEl = document.getElementById('page-title');
-    if (titleEl) titleEl.textContent = I18N[lang]['meta.title'];
-    var descEl = document.getElementById('page-description');
-    if (descEl) descEl.setAttribute('content', I18N[lang]['meta.description']);
-
-    document.querySelectorAll('[data-i18n]').forEach(function(el){
-      var key = el.getAttribute('data-i18n');
-      if (I18N[lang][key] === undefined) return;
-      el.textContent = I18N[lang][key];
-    });
-    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
-      var key = el.getAttribute('data-i18n-html');
-      if (I18N[lang][key] === undefined) return;
-      el.innerHTML = I18N[lang][key];
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
-      var key = el.getAttribute('data-i18n-placeholder');
-      if (I18N[lang][key] === undefined) return;
-      el.setAttribute('placeholder', I18N[lang][key]);
-    });
-    document.querySelectorAll('[data-i18n-aria-label]').forEach(function(el){
-      var key = el.getAttribute('data-i18n-aria-label');
-      if (I18N[lang][key] === undefined) return;
-      el.setAttribute('aria-label', I18N[lang][key]);
-    });
-
-    document.querySelectorAll('.lang-btn').forEach(function(btn){
-      btn.setAttribute('aria-pressed', btn.getAttribute('data-lang-btn') === lang ? 'true' : 'false');
-    });
-
-    try { localStorage.setItem('k549-lang', lang); } catch (e) {}
-  }
-
-  document.querySelectorAll('.lang-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){ applyLanguage(btn.getAttribute('data-lang-btn')); });
-  });
-
-  var savedLang = null;
-  try { savedLang = localStorage.getItem('k549-lang'); } catch (e) {}
-  applyLanguage(savedLang === 'en' ? 'en' : 'ru');
-
-  // --- audio gate ---
-  var audio = document.getElementById('hall-music');
-  var gate = document.getElementById('gate');
-  var enterBtn = document.getElementById('enter-btn');
-  var toggle = document.getElementById('music-toggle');
-  var toggleIcon = toggle.querySelector('i');
-
-  function showToggle(playing){
-    toggle.classList.remove('opacity-0','scale-75');
-    toggle.classList.add('opacity-100','scale-100');
-    toggle.setAttribute('aria-pressed', playing ? 'true' : 'false');
-    toggle.setAttribute('aria-label', I18N[currentLang][playing ? 'music.off' : 'music.on']);
-    toggleIcon.setAttribute('data-lucide', playing ? 'volume-2' : 'volume-x');
-    if (window.lucide) lucide.createIcons();
-  }
-
-  function startMusic(){
-    audio.volume = 0.55;
-    var p = audio.play();
-    if (p && p.catch) {
-      p.then(function(){ showToggle(true); }).catch(function(){ showToggle(false); });
-    } else {
-      showToggle(true);
-    }
-    gate.classList.add('opacity-0','pointer-events-none');
-    setTimeout(function(){ gate.style.display = 'none'; }, 700);
-  }
-
-  var auto = audio.play();
-  if (auto && auto.catch) {
-    auto.then(function(){
-      showToggle(true);
-      gate.classList.add('opacity-0','pointer-events-none');
-      setTimeout(function(){ gate.style.display = 'none'; }, 700);
-    }).catch(function(){ /* autoplay blocked: wait for the gate click */ });
-  }
-
-  enterBtn.addEventListener('click', startMusic);
-
-  toggle.addEventListener('click', function(){
-    if (audio.paused){
-      audio.play().then(function(){ showToggle(true); });
-    } else {
-      audio.pause();
-      showToggle(false);
-    }
-  });
-
-  // --- mobile menu ---
-  var menuToggle = document.getElementById('menu-toggle');
-  var mobileMenu = document.getElementById('mobile-menu');
-  // note: the "hidden" attribute and a static "flex" class have equal CSS
-  // specificity, so Tailwind's .flex rule (loaded after the UA stylesheet)
-  // was winning and the menu stayed visible - toggle the "flex" class
-  // in lockstep with "hidden" instead of leaving it on permanently
-  menuToggle.addEventListener('click', function(){
-    var isHidden = mobileMenu.hasAttribute('hidden');
-    if (isHidden) { mobileMenu.removeAttribute('hidden'); mobileMenu.classList.add('flex'); menuToggle.setAttribute('aria-expanded','true'); }
-    else { mobileMenu.setAttribute('hidden',''); mobileMenu.classList.remove('flex'); menuToggle.setAttribute('aria-expanded','false'); }
-  });
-  mobileMenu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ mobileMenu.setAttribute('hidden',''); mobileMenu.classList.remove('flex'); menuToggle.setAttribute('aria-expanded','false'); });
-  });
-
-  // --- 3D tilt on feature cards ---
-  if (!reduceMotion) {
-    document.querySelectorAll('.tilt-card').forEach(function(card){
-      card.addEventListener('pointermove', function(e){
-        var r = card.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width - 0.5;
-        var py = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform = 'perspective(700px) rotateX(' + (-py*8) + 'deg) rotateY(' + (px*8) + 'deg) translateY(-2px)';
-      });
-      card.addEventListener('pointerleave', function(){
-        card.style.transform = 'perspective(700px) rotateX(0) rotateY(0)';
-      });
-    });
-  }
-
-  // --- migration application form: submits to Cloudflare Worker (Telegram + GitHub log), with copyable fallback ---
-  var WORKER_URL = 'https://k549-migration-form.sergey-belyaev88.workers.dev';
-  var form = document.getElementById('migration-form');
-  var result = document.getElementById('form-result');
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var data = new FormData(form);
-    var t = I18N[currentLang];
-    var text =
-      t['result.header'] + '\n' +
-      t['result.nickname'] + ': ' + data.get('nickname') + '\n' +
-      t['result.server'] + ': ' + (data.get('server') || '—') + '\n' +
-      t['result.power'] + ': ' + (data.get('power') || '—') + '\n' +
-      t['result.farms'] + ': ' + (data.get('farms') || '—');
-
-    result.hidden = false;
-    result.innerHTML =
-      '<h3 class="font-display font-bold uppercase tracking-wide text-fg mb-2">' + t['result.title'] + '</h3>' +
-      '<p id="submit-status" class="text-fg-muted mb-3">' + t['result.sending'] + '</p>' +
-      '<pre class="whitespace-pre-wrap break-words bg-charcoal-deep/60 rounded-lg p-4 text-fg-muted font-stat"></pre>' +
-      '<p class="text-fg-muted mt-3">' + t['result.copy_hint'] + '</p>' +
-      '<div class="flex flex-wrap gap-2 mt-3">' +
-        '<button type="button" id="copy-btn" class="rounded-lg border border-ice/30 bg-ice/10 text-ice px-4 py-2 text-xs font-semibold hover:bg-ice/20 transition">' + t['result.copy_btn'] + '</button>' +
-        '<a href="https://t.me/Keypoint21" target="_blank" rel="noopener" class="rounded-lg border border-white/15 bg-white/5 text-fg px-4 py-2 text-xs font-semibold hover:border-ice/40 transition">' + t['result.write_to'] + ' 21СаМец21</a>' +
-        '<a href="https://t.me/EvaZaltsman" target="_blank" rel="noopener" class="rounded-lg border border-white/15 bg-white/5 text-fg px-4 py-2 text-xs font-semibold hover:border-ice/40 transition">' + t['result.write_to'] + ' Кэтрин</a>' +
-      '</div>';
-    result.querySelector('pre').textContent = text;
-    result.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'center'});
-
-    document.getElementById('copy-btn').addEventListener('click', function(){
-      navigator.clipboard.writeText(text).then(function(){
-        var btn = document.getElementById('copy-btn');
-        var old = btn.textContent;
-        btn.textContent = I18N[currentLang]['result.copied'];
-        setTimeout(function(){ btn.textContent = old; }, 1800);
-      });
-    });
-
-    fetch(WORKER_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        nickname: data.get('nickname'),
-        server: data.get('server'),
-        power: data.get('power'),
-        farms: data.get('farms'),
-        lang: currentLang,
-      }),
-    }).then(function(res){
-      var status = document.getElementById('submit-status');
-      if (!status) return;
-      status.textContent = res.ok ? I18N[currentLang]['result.sent'] : I18N[currentLang]['result.send_error'];
-    }).catch(function(){
-      var status = document.getElementById('submit-status');
-      if (status) status.textContent = I18N[currentLang]['result.send_error'];
-    });
-  });
-})();
-</script>
 </body>
+
 </html>
